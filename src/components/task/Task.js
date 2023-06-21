@@ -4,11 +4,26 @@ import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import { Image } from "antd";
-function Task({ each }) {
-  const { id, status, priority, title, description, comments, files, guests, photos } =
-    each;
+function Task({ each, handleDragEnter, handleDragEnd }) {
+  const {
+    id,
+    status,
+    priority,
+    title,
+    description,
+    comments,
+    files,
+    guests,
+    photos,
+  } = each;
+
   return (
-    <div className="task_item">
+    <div
+      className="task_item"
+      draggable
+      onDragEnd={()=>handleDragEnd(id,status)}
+      onDragEnter={()=>handleDragEnter(id,status)}
+    >
       <div className="task_status">
         {status === "done" && (
           <div className="priority completed">Completed</div>
@@ -24,15 +39,15 @@ function Task({ each }) {
       <h1>{title}</h1>
       <p>{description}</p>
       <div className="photo_list">
-      {photos?.map((each) => {
-            return (
-              <div className="task_photo">
-                <Image src={each} className="task_img" />
-              </div>
-            );
-          })}
+        {photos?.map((each) => {
+          return (
+            <div className="task_photo">
+              <Image src={each} className="task_img" />
+            </div>
+          );
+        })}
       </div>
-      
+
       <div className="task_footer">
         <div className="guest_list">
           {guests?.map((each) => {

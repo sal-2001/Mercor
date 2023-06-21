@@ -3,8 +3,8 @@
     flex-direction: column;
     border-right: 1px #dbdbdb solid;
     width: 100%;
-    max-width: 250px;
-    min-width: 230px;
+    max-width: 240px;
+    min-width: 220px;
     color: #787486;
 }
 .page_list{

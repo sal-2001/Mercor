@@ -22,6 +22,7 @@ function Home() {
   const [onProgressList, setOnProgressList] = useState([]);
   const [completedList, setCompletedList] = useState([]);
   const [taskList, setTaskList] = useState([]);
+  const [target, setTarget] = useState({ id: "", status: "" });
   useEffect(() => {
     if (taskList.length === 0) {
       setTaskList(TaskData?.tasks);
@@ -38,6 +39,64 @@ function Home() {
       }
     });
   }, [taskList]);
+  const handleDragEnter = (id, status) => {
+    setTarget({ id: id, status: status });
+  };
+  const handleDragEnd = (id, status) => {
+    let srcIndex, srcItem;
+    let srcList;
+    // console.log(target.status);
+    if (status === target?.status) {
+      return;
+    }
+    if (status === "todo") {
+      srcIndex = todoList?.findIndex((item) => item?.id === id);
+      if (srcIndex < 0) {
+        return;
+      }
+      srcItem = todoList[srcIndex];
+      srcList = [...todoList];
+    } else if (status === "onprogress") {
+      srcIndex = onProgressList?.findIndex((item) => item?.id === id);
+      if (srcIndex < 0) {
+        return;
+      }
+      srcItem = onProgressList[srcIndex];
+      srcList = [...onProgressList];
+    } else if (status === "done") {
+      srcIndex = completedList?.findIndex((item) => item?.id === id);
+      if (srcIndex < 0) {
+        return;
+      }
+      srcItem = completedList[srcIndex];
+      srcList = [...completedList];
+    }
+    srcList?.splice(srcIndex, 1);
+    if (status === "todo") {
+      setTodoList(srcList);
+    } else if (status === "onprogress") {
+      setOnProgressList(srcList);
+    } else if (status === "done") {
+      setCompletedList(srcList);
+    }
+    let trgList;
+    if (target?.status === "todo") {
+      srcItem.status = "todo";
+      trgList = [...todoList];
+      trgList?.unshift(srcItem);
+      setTodoList(trgList);
+    } else if (target?.status === "onprogress") {
+      srcItem.status = "onprogress";
+      trgList = [...onProgressList];
+      trgList?.unshift(srcItem);
+      setOnProgressList(trgList);
+    } else if (target?.status === "done") {
+      srcItem.status = "done";
+      trgList = [...completedList];
+      trgList?.unshift(srcItem);
+      setCompletedList(trgList);
+    }
+  };
   return (
     <div className="home">
       <NavbarRight />
@@ -51,32 +110,34 @@ function Home() {
           <div className="title_invite">
             <AddRoundedIcon className="title_icon" />
             <p>Invite</p>
-            <div className="invite_image_info">
-              <Image
-                src="https://www.shutterstock.com/image-vector/simple-cartoon-avatar-vector-flat-260nw-1988123576.jpg"
-                className="invite_user_image"
-              />
-            </div>
-            <div className="invite_image_info">
-              <Image
-                src="https://www.persofoto.de/apple-touch-icon-180x180.png"
-                className="invite_user_image"
-              />
-            </div>
-            <div className="invite_image_info">
-              <Image
-                src="https://www.shutterstock.com/image-vector/simple-cartoon-girl-avatar-drawing-600w-1988228618.jpg"
-                className="invite_user_image"
-              />
-            </div>
-            <div className="invite_image_info">
-              <Image
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxcryDQUGWA6r5cfwJtfIo6ylDVf97EUGoIhokfp5Mbdlaocg4GElk9NSYfdKHMQrlu5w&usqp=CAU"
-                className="invite_user_image"
-              />
-            </div>
-            <div className="invite_image_info">
-              <div className="invite_remaining">+2</div>
+            <div className="invite_users">
+              <div className="invite_image_info">
+                <Image
+                  src="https://www.shutterstock.com/image-vector/simple-cartoon-avatar-vector-flat-260nw-1988123576.jpg"
+                  className="invite_user_image"
+                />
+              </div>
+              <div className="invite_image_info">
+                <Image
+                  src="https://www.persofoto.de/apple-touch-icon-180x180.png"
+                  className="invite_user_image"
+                />
+              </div>
+              <div className="invite_image_info">
+                <Image
+                  src="https://www.shutterstock.com/image-vector/simple-cartoon-girl-avatar-drawing-600w-1988228618.jpg"
+                  className="invite_user_image"
+                />
+              </div>
+              <div className="invite_image_info">
+                <Image
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxcryDQUGWA6r5cfwJtfIo6ylDVf97EUGoIhokfp5Mbdlaocg4GElk9NSYfdKHMQrlu5w&usqp=CAU"
+                  className="invite_user_image"
+                />
+              </div>
+              <div className="invite_image_info">
+                <div className="invite_remaining">+2</div>
+              </div>
             </div>
           </div>
         </div>
@@ -116,7 +177,14 @@ function Home() {
               <AddRoundedIcon className="title_icon" />
             </div>
             {todoList?.map((each) => {
-              return <Task id={each?.id} each={each} />;
+              return (
+                <Task
+                  id={each?.id}
+                  each={each}
+                  handleDragEnd={handleDragEnd}
+                  handleDragEnter={handleDragEnter}
+                />
+              );
             })}
           </div>
           <div className="task_container">
@@ -130,7 +198,14 @@ function Home() {
               </div>
             </div>
             {onProgressList?.map((each) => {
-              return <Task id={each?.id} each={each} />;
+              return (
+                <Task
+                  id={each?.id}
+                  each={each}
+                  handleDragEnd={handleDragEnd}
+                  handleDragEnter={handleDragEnter}
+                />
+              );
             })}
           </div>
           <div className="task_container">
@@ -144,7 +219,14 @@ function Home() {
               </div>
             </div>
             {completedList?.map((each) => {
-              return <Task id={each?.id} each={each} />;
+              return (
+                <Task
+                  id={each?.id}
+                  each={each}
+                  handleDragEnd={handleDragEnd}
+                  handleDragEnter={handleDragEnter}
+                />
+              );
             })}
           </div>
         </div>
