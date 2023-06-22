@@ -96,6 +96,7 @@
 .footer_icon {
   font-size: 21px !important;
   color: #787486;
+  cursor: pointer;
 }
 @media screen and (max-width: 850px) {
   .task_item {

@@ -29,6 +29,7 @@
   padding: 2px;
   border-radius: 5px;
   font-size: 15px !important;
+  cursor: pointer;
 }
 .title_invite {
   display: flex;
@@ -93,6 +94,7 @@
   justify-content: space-around;
   align-items: center;
   gap: 3px;
+  cursor: pointer;
 }
 .filter_icon {
   font-size: 18px !important;
@@ -118,10 +120,12 @@
   font-size: 23px !important;
   border-radius: 5px;
   padding: 2px;
+  cursor: pointer;
 }
-.gird_icon {
-  font-size: 20px !important;
+.grid_icon {
+  font-size: 26px !important;
   color: #787486;
+  cursor: pointer;
 }
 .home_tasks {
   display: flex;

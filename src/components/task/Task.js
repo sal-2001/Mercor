@@ -34,7 +34,7 @@ function Task({ each, handleDragEnter, handleDragEnd }) {
         {status !== "done" && priority === "High" && (
           <div className="priority high">High</div>
         )}
-        <MoreHorizRoundedIcon />
+        <MoreHorizRoundedIcon style={{cursor: 'pointer'}}/>
       </div>
       <h1>{title}</h1>
       <p>{description}</p>
