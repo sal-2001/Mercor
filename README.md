@@ -1,5 +1,5 @@
-# Project M
+# Kanban Clone
 
-This project was bootstrapped with [link](https://mercor-app.vercel.app/).
+A frontend todo application with Kanban functionality.
 
 
