@@ -3,6 +3,11 @@
   flex-direction: row;
   border-bottom: 1px #dbdbdb solid;
   height: 70px;
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 100;
+  box-shadow: 5px 0px 10px 0px  #c4c4c4;
 }
 .left_container {
   display: flex;
