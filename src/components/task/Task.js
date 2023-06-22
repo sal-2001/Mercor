@@ -61,11 +61,13 @@ function Task({ each, handleDragEnter, handleDragEnd }) {
         <div className="file_details">
           <div className="file_item">
             <SmsOutlinedIcon className="footer_icon" />
-            <p>{`${comments} comments`}</p>
+            <p>{`${comments} `}</p>
+            <p>comments</p>
           </div>
           <div className="file_item">
             <InsertDriveFileOutlinedIcon className="footer_icon" />
-            <p>{`${files} files`}</p>
+            <p>{`${files} `}</p>
+            <p>{`files`}</p>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px #dbdbdb solid;
-  height: 70px; 
+  height: 70px;
 }
 .left_container {
   display: flex;
@@ -12,11 +12,11 @@
   gap: 20px;
   width: 100%;
 }
-.left_container > h4{
-  color: #0D062D;
+.left_container > h4 {
+  color: #0d062d;
 }
-.double_left_icon{
-    color: #787486;
+.double_left_icon {
+  color: #787486;
 }
 .right_container {
   display: flex;
@@ -36,18 +36,18 @@
   width: 300px;
   margin-right: auto;
 }
-.notification{
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
+.notification {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 .search_icon {
   font-size: 22px;
   color: #787486;
 }
-.calendar_icon{
-    font-size: 22px;
-    color: #787486;
+.calendar_icon {
+  font-size: 22px;
+  color: #787486;
 }
 .search_input {
   background-color: #f5f5f5;
@@ -55,35 +55,74 @@
   outline: none !important;
   box-shadow: none;
 }
-.details{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-left: 10px;
+.details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 10px;
 }
-.text_info{
-    display: flex;
-    flex-direction: column;
-    text-align: right;
+.text_info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 7px;
+}
+.text_info > p {
+  font-size: 13px;
+  color: #0d062d;
+}
+.text_info > span {
+  font-size: 11px;
+  color: #787486;
+}
+.image_info {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user_image {
+  border-radius: 50px;
+}
+@media screen and (max-width: 850px) {
+  .navbar {
+    height: 60px;
+  }
+  .left_container {
+    padding: 12px;
+  }
+  .right_container {
+    padding: 12px;
+  }
+  .search_bar {
+    width: 300px;
+  }
+  .notification {
+    gap: 10px;
+  }
+  .search_icon {
+    font-size: 22px !important;
+  }
+  .calendar_icon {
+    font-size: 20px !important;
+  }
+  .details {
+    gap: 15px;
+  }
+  .text_info {
     gap: 7px;
-}
-.text_info > p{
-    font-size: 13px;
-    color: #0D062D;
-}
-.text_info > span{
-    font-size: 11px;
-    color: #787486;
-}
-.image_info{
-    height: 45px;
-    width: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.user_image{
-    border-radius: 50px;
+  }
+  .text_info > p {
+    font-size: 12px;
+  }
+  .text_info > span {
+    font-size: 10px;
+  }
+  .image_info {
+    height: 40px;
+    width: 40px;
+  }
 }

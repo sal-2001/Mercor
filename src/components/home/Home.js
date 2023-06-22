@@ -45,8 +45,44 @@ function Home() {
   const handleDragEnd = (id, status) => {
     let srcIndex, srcItem;
     let srcList;
+    let trgList, trgIndex;
     // console.log(target.status);
     if (status === target?.status) {
+      if (status === "todo") {
+        srcIndex = todoList?.findIndex((item) => item?.id === id);
+        if (srcIndex < 0) {
+          return;
+        } 
+        srcItem = todoList[srcIndex];
+        srcList = [...todoList];
+        srcList?.splice(srcIndex, 1);
+        trgIndex = srcList?.findIndex((item)=> item?.id === target?.id);
+        srcList?.splice(trgIndex,0,srcItem);
+        setTodoList(srcList);
+      } else if (status === "onprogress") {
+        srcIndex = onProgressList?.findIndex((item) => item?.id === id);
+        if (srcIndex < 0) {
+          return;
+        }
+        srcItem = onProgressList[srcIndex];
+        srcList = [...onProgressList];
+        srcList?.splice(srcIndex, 1);
+        trgIndex = srcList?.findIndex((item)=> item?.id === target?.id);
+        srcList?.splice(trgIndex,0,srcItem);
+        setOnProgressList(srcList);
+      } else if (status === "done") {
+        srcIndex = completedList?.findIndex((item) => item?.id === id);
+        if (srcIndex < 0) {
+          return;
+        }
+        srcItem = completedList[srcIndex];
+        srcList = [...completedList];
+        srcList?.splice(srcIndex, 1);
+        trgIndex = srcList?.findIndex((item)=> item?.id === target?.id);
+        srcList?.splice(trgIndex,0,srcItem);
+        setCompletedList(srcList);
+      }
+
       return;
     }
     if (status === "todo") {
@@ -79,21 +115,23 @@ function Home() {
     } else if (status === "done") {
       setCompletedList(srcList);
     }
-    let trgList;
     if (target?.status === "todo") {
+      trgIndex = todoList?.findIndex((item) => item?.id === target?.id);
       srcItem.status = "todo";
       trgList = [...todoList];
-      trgList?.unshift(srcItem);
+      trgList?.splice(trgIndex, 0, srcItem);
       setTodoList(trgList);
     } else if (target?.status === "onprogress") {
+      trgIndex = onProgressList?.findIndex((item) => item?.id === target?.id);
       srcItem.status = "onprogress";
       trgList = [...onProgressList];
-      trgList?.unshift(srcItem);
+      trgList?.splice(trgIndex, 0, srcItem);
       setOnProgressList(trgList);
     } else if (target?.status === "done") {
+      trgIndex = completedList?.findIndex((item) => item?.id === target?.id);
       srcItem.status = "done";
       trgList = [...completedList];
-      trgList?.unshift(srcItem);
+      trgList?.splice(trgIndex, 0, srcItem);
       setCompletedList(trgList);
     }
   };
