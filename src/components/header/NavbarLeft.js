@@ -1,13 +1,20 @@
 import React from "react";
 import "./Navbar.css";
 import { DoubleLeftOutlined } from "@ant-design/icons";
+import { Image } from "antd";
 
 function NavbarLeft() {
   return (
     <div className="navbar">
       <div className="left_container">
-        <h4>Project M</h4>
-        <DoubleLeftOutlined className="double_left_icon"/>
+        <div className="logo_text">
+          <Image
+            src="https://ik.imagekit.io/wqjwh0cz6/Group_7.png?updatedAt=1687415022784"
+            className="logo_img"
+          />
+          <h4>Project M</h4>
+        </div>
+        <DoubleLeftOutlined className="double_left_icon" />
       </div>
     </div>
   );

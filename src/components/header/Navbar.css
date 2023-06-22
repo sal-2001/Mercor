@@ -12,8 +12,18 @@
   gap: 20px;
   width: 100%;
 }
-.left_container > h4 {
+.logo_text{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.logo_text > h4 {
   color: #0d062d;
+}
+.logo_img{
+  width: 20px !important;
+  height: 20px !important;
 }
 .double_left_icon {
   color: #787486;
