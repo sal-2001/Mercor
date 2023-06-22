@@ -27,6 +27,20 @@
 }
 .double_left_icon {
   color: #787486;
+  font-size: 20px !important;
+  cursor: pointer;
+}
+.open_side_bar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  width: 20px;
+}
+.double_right_icon {
+  color: #787486;
+  font-size: 20px !important;
+  cursor: pointer;
 }
 .right_container {
   display: flex;

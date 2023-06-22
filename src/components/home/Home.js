@@ -17,7 +17,7 @@ import { Image } from "antd";
 import Task from "../task/Task";
 import { colors } from "@mui/material";
 
-function Home() {
+function Home({openSidebar, setOpenSidebar}) {
   const [todoList, setTodoList] = useState([]);
   const [onProgressList, setOnProgressList] = useState([]);
   const [completedList, setCompletedList] = useState([]);
@@ -137,7 +137,7 @@ function Home() {
   };
   return (
     <div className="home">
-      <NavbarRight />
+      <NavbarRight openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
       <div className="home_container">
         <div className="home_title">
           <div className="title_content">

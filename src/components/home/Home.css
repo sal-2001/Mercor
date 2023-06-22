@@ -137,6 +137,8 @@
   width: 100%;
   border-radius: 20px;
   padding: 10px;
+  min-height: 100px !important;
+  max-height: fit-content !important;
 }
 .task_container_title {
   display: flex;

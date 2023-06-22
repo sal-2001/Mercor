@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { DoubleLeftOutlined } from "@ant-design/icons";
 import { Image } from "antd";
 
-function NavbarLeft() {
+function NavbarLeft({openSidebar, setOpenSidebar}) {
   return (
     <div className="navbar">
       <div className="left_container">
@@ -14,7 +14,7 @@ function NavbarLeft() {
           />
           <h4>Project M</h4>
         </div>
-        <DoubleLeftOutlined className="double_left_icon" />
+        <DoubleLeftOutlined className="double_left_icon" onClick={()=>setOpenSidebar(false)}/>
       </div>
     </div>
   );

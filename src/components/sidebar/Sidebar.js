@@ -12,10 +12,10 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LightbulbRoundedIcon from "@mui/icons-material/LightbulbRounded";
 import { Input } from "antd";
 
-function Sidebar() {
+function Sidebar({openSidebar, setOpenSidebar}) {
   return (
     <div className="side_bar">
-      <NavbarLeft />
+      <NavbarLeft openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
       <div className="page_list">
         <div className="list_item">
           <GridViewOutlinedIcon className="list_icon" />
