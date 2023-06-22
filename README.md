@@ -2,7 +2,7 @@
 
 A frontend todo application with Kanban functionality.
 
-#Exposure
+## Exposure
 * React
 * Vercel
 * Material UI
